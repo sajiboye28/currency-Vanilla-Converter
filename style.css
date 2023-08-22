@@ -1,0 +1,221 @@
+html {
+    height: 100%;
+    background: #223;
+    display: grid;
+    place-items: center;
+}
+
+.box {
+    --border-size: 3px;
+    --border-angle: 0turn;
+    width: 60vmin;
+    height: 50vmin;
+    background-image: conic-gradient(
+            from var(--border-angle),
+            #213,
+            #112 50%,
+            #213
+    ),
+    conic-gradient(from var(--border-angle), transparent 20%, #08f, #f03);
+    background-size: calc(100% - (var(--border-size) * 2))
+    calc(100% - (var(--border-size) * 2)),
+    cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    animation: bg-spin 3s linear infinite;
+}
+
+@keyframes bg-spin {
+    to {
+        --border-angle: 1turn;
+    }
+}
+
+.box:hover {
+    animation-play-state: paused;
+}
+
+@property --border-angle {
+    syntax: "<angle>";
+    inherits: true;
+    initial-value: 0turn;
+}
+
+
+@media (max-width: 768px) {
+    .box {
+        width: 80%;
+        height: auto;
+        font-size: 1.2rem;
+    }
+
+    form select,
+    form input[type="number"] {
+        width: 60%;
+        font-size: 1.2rem;
+    }
+
+    form button {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .box {
+        width: 90%;
+        height: auto;
+        font-size: 1rem;
+    }
+
+    form select,
+    form input[type="number"] {
+        width: 70%;
+        font-size: 1rem;
+    }
+
+    form button {
+        font-size: 1rem;
+    }
+}
+
+
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 50px;
+    color: #007bff;
+    text-shadow: 2px 2px #ccc;
+    animation-name: colorChange;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes colorChange {
+    0% {
+        color: #007bff;
+    }
+    50% {
+        color: #ff6b6b;
+        text-shadow: 2px 2px #ff6b6b;
+    }
+    100% {
+        color: #007bff;
+        text-shadow: 2px 2px #ccc;
+    }
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #ffffff;
+    text-align: center; /* to ensure labels are aligned left */
+}
+
+form select,
+form input[type="number"] {
+    display: inline-block;
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #0050f6;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+/*
+form button:hover {
+    background-color: #0069d9;
+}
+*/
+
+
+.hover2 {
+    border: 8px solid;
+    border-image: repeating-linear-gradient(135deg, #ad2381 0 10px, #ffffff 0 20px, #0050f6 0 30px) 8;
+    -webkit-mask:
+            conic-gradient(from 180deg at top 8px right 8px, #0000 90deg,#000 0)
+            var(--_i,200%) 0  /200% var(--_i,8px) border-box no-repeat,
+            conic-gradient(at bottom 8px left  8px,  #0000 90deg,#000 0)
+            0   var(--_i,200%)/var(--_i,8px) 200% border-box no-repeat,
+            linear-gradient(#000 0 0) padding-box no-repeat;
+    transition: .3s, -webkit-mask-position .3s .3s;
+}
+.hover2:hover {
+    --_i: 100%;
+    color: #CC333F;
+    transition: .3s, -webkit-mask-size .3s .3s;
+}
+
+
+
+
+
+
+#result {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+@keyframes slideForm {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseButton {
+    0% {
+        transform: scale(1);
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    }
+}
+
+#result {
+    font-size: 24px;
+    color: white;
+    border: 0px solid #0069d9;
+    border-radius: 3px;
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
